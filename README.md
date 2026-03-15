@@ -70,25 +70,35 @@ cd gsapp-kubernetes-project
 ### 2. Build Docker Image
 ```bash
 docker build -t nazwaj72/gsapp:v1 ./docker
+```
 3. Start Minikube and Enable Ingress
 ```bash
 minikube start
 minikube addons enable ingress
+```
 4. Apply Kubernetes Resources
 ```bash
 kubectl apply -f k8s/
+```
 5. Check Resources
 ```bash
 kubectl get pods
-kubectl get svc
-kubectl get ingress
-kubectl get hpa
-6. Access Application
+```
 ```bash
+kubectl get svc
+```
+```bash
+kubectl get ingress
+```
+```bash
+kubectl get hpa
+```
+6. Access Application
 Add gsapp to your /etc/hosts pointing to Minikube IP:
-
+```bash
 echo "$(minikube ip) gsapp.local" | sudo tee -a /etc/hosts
-
+```
 Open in browser:
 ```bash
 http://gsapp.local
+```
