@@ -80,7 +80,7 @@ minikube addons enable ingress
 ```bash
 kubectl apply -f k8s/
 ```
-#### Note: If you want to apply all resources in default namespace, don't apply the "namespace.yaml" file. But if you wnat to apply resources in a custom namespace such as "gsapp-ns", then use the option -n as below:
+Note: If you want to apply all resources in default namespace, don't apply the "namespace.yaml" file. But if you wnat to apply resources in a custom namespace such as "gsapp-ns", then use the option -n as below:
 ```bash
 kubectl apply -f k8s/ -n <custome namespace>
 ```
@@ -106,3 +106,8 @@ Open in browser:
 ```bash
 http://gsapp.local
 ```
+You can also observe this app using minikube dashboard by accessing the url:
+```bash
+http://dashboard.gsapp.local
+```
+This minikube dashboard is made by applying the file **dashboard-ingress.yaml**
