@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gsapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gsapp
+  template:
+    metadata:
+      labels:
+        app: gsapp
+    spec:
+      containers:
+      - name: gsapp
+        image: nazwaj72/gsapp:v1
+        
+        envFrom:
+        - configMapRef:
+            name: gsapp-config
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 3000
+        
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 2
+          failureThreshold: 3
+
+        volumeMounts:
+        - name: gsapp-storage
+          mountPath: /etc/todos
+      volumes:
+      - name: gsapp-storage
+        persistentVolumeClaim:
+          claimName: gsapp-pvc
