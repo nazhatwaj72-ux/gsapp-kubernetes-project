@@ -76,9 +76,13 @@ docker build -t nazwaj72/gsapp:v1 ./docker
 minikube start
 minikube addons enable ingress
 ```
-4. Apply Kubernetes Resources
+4. Apply Kubernetes Resources (default namespace)
 ```bash
 kubectl apply -f k8s/
+```
+# Note: If you want to apply all resources in default namespace, don't apply the "namespace.yaml" file. But if you wnat to apply resources in a custom namespace such as "gsapp-ns", then use the option -n as below:
+```bash
+kubectl apply -f k8s/ -n <custome namespace>
 ```
 5. Check Resources
 ```bash
