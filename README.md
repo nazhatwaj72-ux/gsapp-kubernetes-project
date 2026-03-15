@@ -53,6 +53,7 @@ Persistent Volume (PVC)
   - Ingress
   - ConfigMap
   - PersistentVolumeClaim
+  - StorageClass
   - Health Probes
   - Horizontal Pod Autoscaler
 - **Minikube** (for local testing)
@@ -80,7 +81,7 @@ minikube addons enable ingress
 ```bash
 kubectl apply -f k8s/
 ```
-Note: If you want to apply all resources in default namespace, don't apply the "namespace.yaml" file. But if you wnat to apply resources in a custom namespace such as "gsapp-ns", then use the option -n as below:
+Note: If you want to apply all resources in default namespace, don't apply the "namespace.yaml" file. But if you wnat to apply resources in a custom namespace such as "gsapp-ns", then use the option "-n" as below:
 ```bash
 kubectl apply -f k8s/ -n <custome namespace>
 ```
