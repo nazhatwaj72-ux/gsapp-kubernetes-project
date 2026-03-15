@@ -66,8 +66,8 @@ Persistent Volume (PVC)
 ```bash
 git clone git@github.com:nazhatwaj72-ux/gsapp-kubernetes-project.git
 cd gsapp-kubernetes-project
-
-2. Build Docker Image
+```
+### 2. Build Docker Image
 ```bash
 docker build -t nazwaj72/gsapp:v1 ./docker
 3. Start Minikube and Enable Ingress
